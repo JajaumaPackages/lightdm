@@ -4,13 +4,13 @@
 
 Name:    lightdm
 Summary: A cross-desktop Display Manager
-Version: 1.18.2
+Version: 1.19.5
 Release: 1%{?dist}
 
 # library/bindings are LGPLv2 or LGPLv3, the rest GPLv3+
 License: (LGPLv2 or LGPLv3) and GPLv3+
-URL:     https://launchpad.net/lightdm/1.18
-Source0: https://launchpad.net/lightdm/1.18/%{version}/+download/lightdm-%{version}.tar.xz
+URL:     https://launchpad.net/lightdm/1.19
+Source0: https://launchpad.net/lightdm/1.19/%{version}/+download/lightdm-%{version}.tar.xz
 
 Source1: lightdm.pam
 Source2: lightdm-autologin.pam
@@ -268,6 +268,10 @@ exit 0
 
 
 %changelog
+* Fri Sep 30 2016 Jajauma's Packages <jajauma@yandex.ru> - 1.19.5-1
+- Update to latest upstream release
+- Drop Qt5 subpackage for RHEL
+
 * Thu Jul 07 2016 Rex Dieter <rdieter@fedoraproject.org> 1.18.2-1
 - lightdm-1.18.2
 
