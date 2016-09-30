@@ -55,7 +55,6 @@ BuildRequires: pkgconfig(gobject-2.0)
 BuildRequires: pkgconfig(gobject-introspection-1.0) >= 0.9.5
 BuildRequires: pkgconfig(libxklavier)
 BuildRequires: pkgconfig(QtCore) pkgconfig(QtDBus) pkgconfig(QtGui) pkgconfig(QtNetwork)
-BuildRequires: pkgconfig(Qt5Core) pkgconfig(Qt5DBus) pkgconfig(Qt5Gui)
 BuildRequires: pkgconfig(x11)
 BuildRequires: pkgconfig(xcb)
 BuildRequires: pkgconfig(xdmcp)
@@ -120,21 +119,6 @@ Requires: %{name}-qt%{?_isa} = %{version}-%{release}
 %description qt-devel
 %{summary}.
 
-%package qt5
-Summary: LightDM Qt5 client library
-# see comment in -gobject above
-#Requires: %{name} = %{version}-%{release}
-%{?_qt5:Requires: %{?_qt5}%{?_isa} >= %{_qt5_version}}
-%description qt5
-This package contains a Qt5-based library for LightDM clients to use to interface
-with LightDM.
-
-%package qt5-devel
-Summary: Development files for %{name}-qt5
-Requires: %{name}-qt5%{?_isa} = %{version}-%{release}
-%description qt5-devel
-%{summary}.
-
 
 %prep
 %setup -q
@@ -154,7 +138,6 @@ sed -i -e 's|"/lib /usr/lib|"/%{_lib} %{_libdir}|' configure
   --enable-gtk-doc \
   --enable-libaudit \
   --enable-liblightdm-qt \
-  --enable-liblightdm-qt5 \
   --enable-introspection \
   %{?tests:--enable-tests}%{!?tests:--disable-tests} \
   --enable-vala \
@@ -282,18 +265,6 @@ exit 0
 %{_includedir}/lightdm-qt-3/
 %{_libdir}/liblightdm-qt-3.so
 %{_libdir}/pkgconfig/liblightdm-qt-3.pc
-
-%post qt5 -p /sbin/ldconfig
-%postun qt5 -p /sbin/ldconfig
-
-%files qt5
-%license COPYING.LGPL2 COPYING.LGPL3
-%{_libdir}/liblightdm-qt5-3.so.0*
-
-%files qt5-devel
-%{_includedir}/lightdm-qt5-3/
-%{_libdir}/liblightdm-qt5-3.so
-%{_libdir}/pkgconfig/liblightdm-qt5-3.pc
 
 
 %changelog
