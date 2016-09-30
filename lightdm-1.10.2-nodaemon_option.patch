@@ -1,0 +1,12 @@
+diff -up lightdm-1.10.2/src/lightdm.c.nodaemon_option lightdm-1.10.2/src/lightdm.c
+--- lightdm-1.10.2/src/lightdm.c.nodaemon_option	2014-09-17 06:42:48.681674585 -0500
++++ lightdm-1.10.2/src/lightdm.c	2014-09-17 06:44:03.021901180 -0500
+@@ -1135,7 +1135,7 @@ main (int argc, char **argv)
+         g_printerr (/* Text printed out when an unknown command-line argument provided */
+                     _("Run '%s --help' to see a full list of available command line options."), argv[0]);
+         g_printerr ("\n");
+-        return EXIT_FAILURE;
++        /* return EXIT_FAILURE; */
+     }
+ 
+     /* Show combined configuration if user requested it */
